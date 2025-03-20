@@ -1,0 +1,329 @@
+<!-- <form action="{{ url_for('signup') }}" method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+     -->
+    <!-- Debugging: Add this -->
+    <!-- <button type="submit" onclick="console.log('Form submitted!')">Sign Up</button>
+</form> -->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Care Center - Signup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #9b59b6;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
+    }
+
+    /* Webkit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #ffecb3;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+    }
+    
+    .signup-container {
+      max-width: 450px;
+      width: 100%;
+      padding: 20px;
+    }
+    
+    .signup-form {
+      background: linear-gradient(135deg, var(--dark-color), #1a2a3a);
+      color: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .signup-form::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    
+    .signup-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .signup-header img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin-bottom: 15px;
+    }
+    
+    .signup-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light-color);
+      margin-bottom: 5px;
+    }
+    
+    .signup-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      display: block;
+    }
+    
+    .form-control {
+      border-radius: 8px;
+      padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background-color: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      background-color: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+      border-color: var(--primary-color);
+    }
+    
+    .form-control::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .input-group {
+      position: relative;
+    }
+    
+    .input-group-text {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .signup-btn {
+      background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      width: 100%;
+      transition: all 0.3s;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .signup-btn:hover {
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+    }
+    
+    .signup-btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .login-link {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .login-link a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .login-link a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 576px) {
+      .signup-form {
+        padding: 30px;
+      }
+      
+      .signup-container {
+        padding: 15px;
+      }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+      }
+    }
+    
+    .health-icon {
+      color: var(--secondary-color);
+      font-size: 2rem;
+      margin-right: 10px;
+    }
+  </style>
+
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-form">
+      <div class="signup-header">
+        <img src="{{ url_for('static', filename='img.png') }}" alt="Health Center Logo">
+        <h2><i class="fas fa-heartbeat health-icon"></i>Health Center</h2>
+        <p>Create your account to access health services</p>
+      </div>
+      
+      <form id="signupForm" action="{{ url_for('signup') }}" method="POST">
+        <div class="form-group">
+          <label for="username">
+            <i class="fas fa-user"></i> Username
+          </label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">
+            <i class="fas fa-envelope"></i> Email
+          </label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">
+            <i class="fas fa-lock"></i> Password
+          </label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            <span class="input-group-text" id="togglePassword">
+              <i class="fas fa-eye"></i>
+            </span>
+          </div>
+        </div>
+        
+        <button type="submit" class="signup-btn pulse-animation" onclick="console.log('Form submitted!')">
+          <i class="fas fa-user-plus me-2"></i> Sign Up
+        </button>
+      </form>
+      
+      <div class="login-link">
+        Already have an account? <a href="{{ url_for('login') }}">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script>
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+    
+    togglePassword.addEventListener('click', function() {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      
+      // Toggle icon
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+    });
+    
+    // Form validation
+    const signupForm = document.getElementById('signupForm');
+    
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Here you would typically handle the form submission
+      // For demonstration, we'll just show an alert
+      
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Simple validation
+      if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Submit the form
+      this.submit();
+    });
+  </script>
+</body>
+</html>

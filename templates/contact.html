@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Health Care Center</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #9b59b6;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    
+        /* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Thin width */
+    height: 12px; /* For horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffecb3; /* Light yellow background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+}
+
+
+
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color)) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 12px 0;
+    }
+    
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .myimg {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    
+    .myimg:hover {
+      transform: scale(1.1);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link.active {
+      background-color: var(--secondary-color) !important;
+      color: white !important;
+    }
+    
+    .search-form {
+      position: relative;
+    }
+    
+    .search-form input {
+      border-radius: 20px;
+      padding-left: 15px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .search-form button {
+      border-radius: 20px;
+      background-color: var(--secondary-color);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      transition: all 0.3s;
+    }
+    
+    .search-form button:hover {
+      background-color: var(--accent-color);
+      transform: translateX(3px);
+    }
+    
+    .page-header {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .contact-form {
+      background: linear-gradient(135deg, var(--dark-color), #1a2a3a);
+      color: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      display: block;
+    }
+    
+    .form-control {
+      border-radius: 8px;
+      padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background-color: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      background-color: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+      border-color: var(--primary-color);
+    }
+    
+    .form-control::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .submit-btn {
+      background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      width: 100%;
+      transition: all 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .submit-btn:hover {
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .contact-info-section {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+    }
+    
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      background-color: #f8f9fa;
+    }
+    
+    .contact-info-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 50%;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 10px rgba(46, 204, 113, 0.3);
+    }
+    
+    .contact-text h5 {
+      margin: 0;
+      color: var(--dark-color);
+      font-weight: 600;
+    }
+    
+    .contact-text p {
+      margin: 5px 0 0;
+      color: #666;
+    }
+    
+    .map-container {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border: 3px solid var(--primary-color);
+      margin-bottom: 3rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-link {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark-color);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      transition: all 0.3s;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+    }
+    
+    .social-link.facebook:hover {
+      background: #3b5998;
+    }
+    
+    .social-link.twitter:hover {
+      background: #1da1f2;
+    }
+    
+    .social-link.instagram:hover {
+      background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+    
+    .social-link.linkedin:hover {
+      background: #0077b5;
+    }
+    
+    .faq-section {
+      margin-bottom: 3rem;
+    }
+    
+    .accordion-item {
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .accordion-button {
+      font-weight: 600;
+      padding: 15px 20px;
+      background-color: #f8f9fa;
+      color: var(--dark-color);
+      box-shadow: none !important;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .accordion-body {
+      padding: 20px;
+      background-color: white;
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+      }
+    }
+    
+    .health-icon {
+      color: var(--secondary-color);
+      font-size: 2rem;
+      margin-right: 10px;
+    }
+
+    .logout-btn {
+  background: linear-gradient(to right, #f8576f, #e74c3c);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: white;
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.username-display {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.username-display i {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.username-display:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+
+
+  </style>
+
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Health Center Logo">
+        <a class="navbar-brand" href="#">
+          <i class=""></i>Health Center
+        </a>
+      </div>
+      
+      <!-- Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">
+              <i class="fas fa-info-circle"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/contact">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/developer">
+              <i class="fas fa-code"></i> Developer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">
+              <i class="fas fa-history"></i> History
+            </a>
+          </li>
+        </ul>
+        
+          <!-- Show Username and Logout Button if User is Logged In -->
+          {% if session.username %}
+          <span class="navbar-text username-display me-3">
+            <i class="fas fa-user-circle"></i> {{ session.username }}
+          </span>
+              <a class="btn logout-btn" href="{{ url_for('logout') }}">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+          {% else %}
+              <!-- Show Login Button if Not Logged In -->
+              <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="page-header">
+      <i class="fas fa-envelope"></i> Contact Us
+    </h1>
+    
+    <div class="row">
+      <!-- Contact Information -->
+      <div class="col-md-5 mb-4">
+        <div class="contact-info-section">
+          <h2 class="mb-4" style="color: var(--primary-color);">Get In Touch</h2>
+          
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h5>Our Location</h5>
+              <p>123 Medical Plaza, Healthcare Avenue, Health City, HC 12345</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h5>Call Us</h5>
+              <p>+1 (800) 123-4567</p>
+              <p>+1 (800) 123-7890</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h5>Email Us</h5>
+              <p>info@healthcarecenter.com</p>
+              <p>support@healthcarecenter.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-text">
+              <h5>Office Hours</h5>
+              <p>Monday - Friday: 8AM - 8PM</p>
+              <p>Saturday: 9AM - 5PM</p>
+              <p>Sunday: Closed</p>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="col-md-7 mb-4">
+        <div class="contact-form">
+          <h2 class="mb-4">Send Us a Message</h2>
+          
+          <form action="/contact-submit" method="post">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="name">
+                    <i class="fas fa-user"></i> Full Name
+                  </label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="email">
+                    <i class="fas fa-envelope"></i> Email Address
+                  </label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Your email" required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="phone">
+                    <i class="fas fa-phone"></i> Phone Number
+                  </label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your phone number">
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="subject">
+                    <i class="fas fa-tag"></i> Subject
+                  </label>
+                  <select class="form-control" id="subject" name="subject" required>
+                    <option value="" selected disabled>Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="appointment">Appointment Request</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="support">Technical Support</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group mb-3">
+              <label for="message">
+                <i class="fas fa-comment-alt"></i> Message
+              </label>
+              <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn pulse-animation">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map -->
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ3LjIiTiA3NMKwMDAnMTIuNiJX!5e0!3m2!1sen!2sus!4v1621273409720!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2 class="page-header">Frequently Asked Questions</h2>
+      
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-question-circle me-2"></i> How can I schedule an appointment?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can schedule an appointment through our website by filling out the appointment form, calling our office during business hours, or sending us an email. We typically respond to appointment requests within 24 hours on business days.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <i class="fas fa-question-circle me-2"></i> What insurance plans do you accept?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We accept most major insurance plans including Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, Medicare, and Medicaid. Please contact our office to verify whether we accept your specific insurance plan.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <i class="fas fa-question-circle me-2"></i> What should I bring to my first appointment?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              For your first appointment, please bring your insurance card, a form of photo ID, a list of current medications, any relevant medical records or test results, and payment for your copay or deductible. Arriving 15 minutes early to complete paperwork is recommended.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <i class="fas fa-question-circle me-2"></i> How do I access my medical records?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can access your medical records through our secure patient portal. If you haven't set up your portal account yet, please contact our office for assistance. You can also request physical copies of your records by filling out a medical records release form.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("form").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form from reloading
+
+      let formData = new FormData(this);
+      
+      fetch("/contact-submit", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.status === "success") {
+          document.querySelector("form").reset(); // Clear form after submission
+        }
+      })
+      .catch(error => {
+        alert("Something went wrong! Please try again.");
+        console.error("Error:", error);
+      });
+    });
+  });
+</script>

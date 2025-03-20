@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Care Center - Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #9b59b6;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    
+        /* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Thin width */
+    height: 12px; /* For horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffecb3; /* Light yellow background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+}
+
+
+
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color)) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 12px 0;
+    }
+    
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .myimg {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    
+    .myimg:hover {
+      transform: scale(1.1);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link.active {
+      background-color: var(--secondary-color) !important;
+      color: white !important;
+    }
+    
+    .search-form {
+      position: relative;
+    }
+    
+    .search-form input {
+      border-radius: 20px;
+      padding-left: 15px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .search-form button {
+      border-radius: 20px;
+      background-color: var(--secondary-color);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      transition: all 0.3s;
+    }
+    
+    .search-form button:hover {
+      background-color: var(--accent-color);
+      transform: translateX(3px);
+    }
+    
+    .page-header {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .blog-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+    }
+    
+    .blog-date {
+      font-size: 0.85rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .blog-card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+      background-color: white;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .blog-img-container {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+    
+    .blog-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .blog-card:hover .blog-img-container img {
+      transform: scale(1.05);
+    }
+    
+    .blog-content {
+      padding: 20px;
+    }
+    
+    .blog-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--dark-color);
+      transition: color 0.3s;
+    }
+    
+    .blog-card:hover .blog-title {
+      color: var(--primary-color);
+    }
+    
+    .blog-excerpt {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      gap: 5px;
+    }
+    
+    .read-more:hover {
+      color: var(--accent-color);
+      transform: translateX(5px);
+    }
+    
+    .read-more i {
+      transition: transform 0.3s;
+    }
+    
+    .read-more:hover i {
+      transform: translateX(3px);
+    }
+    
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 15px;
+      margin-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .blog-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .blog-author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .featured-post {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 40px;
+    }
+    
+    .featured-img {
+      height: 350px;
+      position: relative;
+    }
+    
+    .featured-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .featured-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+      color: white;
+    }
+    
+    .featured-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    .featured-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .featured-excerpt {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.9rem;
+    }
+    
+    .featured-button {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .featured-button:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .sidebar {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .sidebar-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .popular-post {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .popular-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .popular-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .popular-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    
+    .popular-post:hover .popular-img img {
+      transform: scale(1.05);
+    }
+    
+    .popular-content {
+      flex-grow: 1;
+    }
+    
+    .popular-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      line-height: 1.4;
+      transition: color 0.3s;
+    }
+    
+    .popular-post:hover .popular-title {
+      color: var(--primary-color);
+    }
+    
+    .popular-date {
+      font-size: 0.8rem;
+      color: #777;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .category-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .category-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .category-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    
+    .category-link:hover {
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+    
+    .category-count {
+      background-color: var(--light-color);
+      padding: 3px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+    }
+    
+    .category-link:hover .category-count {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag {
+      background-color: var(--light-color);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .newsletter-input {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background-color: var(--light-color);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    
+    .newsletter-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+      outline: none;
+    }
+    
+    .newsletter-button {
+      background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .newsletter-button:hover {
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    
+    .page-item {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .page-item:hover {
+      background-color: var(--light-color);
+      transform: translateY(-2px);
+    }
+    
+    .page-item.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    @media (max-width: 991px) {
+      .sidebar {
+        margin-top: 40px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .featured-img {
+        height: 250px;
+      }
+      
+      .featured-title {
+        font-size: 1.5rem;
+      }
+      
+      .featured-excerpt {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img class="myimg" src="/api/placeholder/50/50" alt="Health Center Logo">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-heartbeat health-icon"></i>Health Center
+        </a>
+      </div>
+      
+      <!-- Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">
+              <i class="fas fa-info-circle"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/developer">
+              <i class="fas fa-code"></i> Developer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/blog">
+              <i class="fas fa-blog"></i> Blog
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Search Form -->
+        <form class="d-flex search-form" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search articles..." aria-label="Search">
+          <button class="btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="page-header">
+      <i class="fas fa-blog"></i> Health Center Blog
+    </h1>
+    
+    <!-- Featured Post -->
+    <div class="featured-post">
+      <div class="featured-tag">Featured</div>
+      <div class="featured-img">
+        <img src="../static/blog01.jpg" alt="Featured Post Image">
+      </div>
+      <div class="featured-content">
+        <h2 class="featured-title">10 Simple Habits That Will Transform Your Health This Year</h2>
+        <p class="featured-excerpt">Discover science-backed daily practices to boost your physical and mental wellbeing, backed by our medical experts.</p>
+        <div class="featured-meta">
+          <div class="blog-date">
+            <i class="far fa-calendar-alt"></i> March 15, 2025
+          </div>
+          <div class="blog-author">
+            <img src="../static/doc01.jpg" alt="Author">
+            <span>Dr. Sarah Johnson</span>
+          </div>
+        </div>
+        <a href="#" class="featured-button">
+          Read Article <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Blog Content -->
+    <div class="row">
+      <!-- Main Blog Column -->
+      <div class="col-lg-8">
+        <!-- Blog Post -->
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img src="/api/placeholder/800/400" alt="Blog Image">
+          </div>
+          <div class="blog-content">
+            <div class="blog-category">Nutrition</div>
+            <h3 class="blog-title">Understanding the Mediterranean Diet: Benefits and Implementation</h3>
+            <p class="blog-excerpt">The Mediterranean diet consists of traditional foods that people used to eat in countries like Italy and Greece back in 1960. Researchers noted that these people were exceptionally healthy compared to Americans and had a low risk of many lifestyle diseases.</p>
+            <a href="#" class="read-more">
+              Continue Reading <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="blog-meta">
+              <div class="blog-date">
+                <i class="far fa-calendar-alt"></i> March 10, 2025
+              </div>
+              <div class="blog-author">
+                <img src="/api/placeholder/30/30" alt="Author">
+                <span>Dr. Michael Chen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Post -->
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img src="/api/placeholder/800/400" alt="Blog Image">
+          </div>
+          <div class="blog-content">
+            <div class="blog-category">Mental Health</div>
+            <h3 class="blog-title">Mindfulness Meditation: A Scientific Approach to Stress Reduction</h3>
+            <p class="blog-excerpt">Mindfulness meditation isn't about emptying the mind or achieving a specific state. It's about paying attention to the present moment with curiosity and without judgment. This guide breaks down the scientific benefits and offers a starter routine.</p>
+            <a href="#" class="read-more">
+              Continue Reading <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="blog-meta">
+              <div class="blog-date">
+                <i class="far fa-calendar-alt"></i> March 8, 2025
+              </div>
+              <div class="blog-author">
+                <img src="/api/placeholder/30/30" alt="Author">
+                <span>Dr. Lisa Wong</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Post -->
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img src="/api/placeholder/800/400" alt="Blog Image">
+          </div>
+          <div class="blog-content">
+            <div class="blog-category">Exercise</div>
+            <h3 class="blog-title">High-Intensity Interval Training: Science-Backed Benefits for Busy Lives</h3>
+            <p class="blog-excerpt">HIIT workouts can deliver many of the same benefits as other forms of exercise in a shorter amount of time. This makes them a good option for people who are short on time but still want to see results in their fitness journey.</p>
+            <a href="#" class="read-more">
+              Continue Reading <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="blog-meta">
+              <div class="blog-date">
+                <i class="far fa-calendar-alt"></i> March 5, 2025
+              </div>
+              <div class="blog-author">
+                <img src="/api/placeholder/30/30" alt="Author">
+                <span>Alex Rodriguez, PT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Post -->
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img src="/api/placeholder/800/400" alt="Blog Image">
+          </div>
+          <div class="blog-content">
+            <div class="blog-category">Wellness</div>
+            <h3 class="blog-title">The Science of Sleep: How to Optimize Your Rest for Better Health</h3>
+            <p class="blog-excerpt">Quality sleep is as essential to our health as eating, drinking and breathing. It affects our physical and mental health tremendously, and can dramatically improve your quality of life. Learn evidence-based techniques to improve your sleep.</p>
+            <a href="#" class="read-more">
+              Continue Reading <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="blog-meta">
+              <div class="blog-date">
+                <i class="far fa-calendar-alt"></i> March 1, 2025
+              </div>
+              <div class="blog-author">
+                <img src="/api/placeholder/30/30" alt="Author">
+                <span>Dr. James Smith</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <div class="page-item active">1</div>
+          <div class="page-item">2</div>
+          <div class="page-item">3</div>
+          <div class="page-item">
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+          <div class="page-item">10</div>
+          <div class="page-item">
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <!-- About Widget -->
+        <div class="sidebar">
+          <h3 class="sidebar-title">About The Blog</h3>
+          <p>The Health Center Blog provides evidence-based information about health, wellness, and medical topics. Our articles are written by qualified healthcare professionals and medical experts.</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Popular Posts -->
+        <div class="sidebar">
+          <h3 class="sidebar-title">Popular Posts</h3>
+          
+          <div class="popular-post">
+            <div class="popular-img">
+              <img src="/api/placeholder/80/80" alt="Popular Post">
+            </div>
+            <div class="popular-content">
+              <h4 class="popular-title">Understanding Common Cold vs. Flu: Key Differences</h4>
+              <div class="popular-date">
+                <i class="far fa-calendar-alt"></i> February 28, 2025
+              </div>
+            </div>
+          </div>
+          
+          <div class="popular-post">
+            <div class="popular-img">
+              <img src="/api/placeholder/80/80" alt="Popular Post">
+            </div>
+            <div class="popular-content">
+              <h4 class="popular-title">Heart Health: The Latest Research on Prevention</h4>
+              <div class="popular-date">
+                <i class="far fa-calendar-alt"></i> February 25, 2025
+              </div>
+            </div>
+          </div>
+          
+          <div class="popular-post">
+            <div class="popular-img">
+              <img src="/api/placeholder/80/80" alt="Popular Post">
+            </div>
+            <div class="popular-content">
+              <h4 class="popular-title">5 Daily Habits That Boost Your Immune System</h4>
+              <div class="popular-date">
+                <i class="far fa-calendar-alt"></i> February 20, 2025
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Categories -->
+        <div class="sidebar">
+          <h3 class="sidebar-title">Categories</h3>
+          <ul class="category-list">
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Nutrition</span>
+                <span class="category-count">18</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Mental Health</span>
+                <span class="category-count">12</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Exercise</span>
+                <span class="category-count">15</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Disease Prevention</span>
+                <span class="category-count">10</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Children's Health</span>
+                <span class="category-count">8</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                <span>Senior Health</span>
+                <span class="category-count">9</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Tags -->
+        <div class="sidebar">
+          <h3 class="sidebar-title">Popular Tags</h3>
+          <div class="tag-cloud">
+            <a href="#" class="tag">Nutrition</a>
+            <a href="#" class="tag">Fitness</a>
+            <a href="#" class="tag">Mental Health</a>
+            <a href="#" class="tag">Wellness</a>
+            <a href="#" class="tag">Meditation</a>
+            <a href="#" class="tag">Diet</a>
+            <a href="#" class="tag">Heart Health</a>
+            <a href="#" class="tag">Sleep</a>
+            <a href="#" class="tag">Immunity</a>
+            <a href="#" class="tag">Prevention

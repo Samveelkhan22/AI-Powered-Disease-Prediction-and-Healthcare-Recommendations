@@ -1,0 +1,42 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Search History</h2>
+ -->
+    <!-- {% if history %}
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Symptoms</th>
+                <th>Predicted Disease</th>
+                <th>Description</th>
+                <th>Precautions</th>
+                <th>Medications</th>
+                <th>Recommended Workouts</th>
+                <th>Recommended Diet</th>
+            </tr>
+            {% for entry in history %} -->
+                <!-- <tr> -->
+                    <td>{{ entry[7] }}</td>  <!-- Search Date -->
+                    <td>{{ entry[0] }}</td>  <!-- Symptoms -->
+                    <td>{{ entry[1] }}</td>  <!-- Predicted Disease -->
+                    <td>{{ entry[2] }}</td>  <!-- Description -->
+                    <td>{{ entry[3] }}</td>  <!-- Precautions -->
+                    <td>{{ entry[4] }}</td>  <!-- Medications -->
+                    <td>{{ entry[5] }}</td>  <!-- Workouts -->
+                    <td>{{ entry[6] }}</td>  Diet
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No search history found. Start by searching for symptoms.</p>
+        <a href="{{ url_for('index') }}">Search Symptoms</a>
+    {% endif %}
+</body>
+</html>

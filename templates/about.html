@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Health Center - About Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #9b59b6;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+    }
+
+        /* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Thin width */
+    height: 12px; /* For horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffecb3; /* Light yellow background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+}
+
+
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.7;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color)) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 12px 0;
+    }
+    
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .myimg {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    
+    .myimg:hover {
+      transform: scale(1.1);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link.active {
+      background-color: var(--secondary-color) !important;
+      color: white !important;
+    }
+    
+    .search-form {
+      position: relative;
+    }
+    
+    .search-form input {
+      border-radius: 20px;
+      padding-left: 15px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .search-form button {
+      border-radius: 20px;
+      background-color: var(--secondary-color);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      transition: all 0.3s;
+    }
+    
+    .search-form button:hover {
+      background-color: var(--accent-color);
+      transform: translateX(3px);
+    }
+    
+    .page-header {
+      color: var(--primary-color);
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .about-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      padding: 40px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .section-title {
+      color: var(--dark-color);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title i {
+      color: var(--primary-color);
+      margin-right: 12px;
+      font-size: 1.4rem;
+    }
+    
+    .feature-box {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .feature-title {
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 12px;
+    }
+    
+    .team-section {
+      padding: 40px 0;
+    }
+    
+    .team-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      margin-bottom: 25px;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+    
+    .team-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .team-info {
+      padding: 20px;
+    }
+    
+    .team-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--dark-color);
+    }
+    
+    .team-role {
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .social-link {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--light-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-color);
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .call-to-action {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 12px;
+      padding: 40px;
+      color: white;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .cta-text {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+    
+    .cta-btn {
+      background: white;
+      color: var(--primary-color);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      background: var(--light-color);
+    }
+    
+    .stats-section {
+      padding: 40px 0;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      border-bottom: 4px solid var(--primary-color);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .stat-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 10px;
+    }
+    
+    .stat-text {
+      color: #777;
+      font-size: 1rem;
+    }
+
+    .testimonial-section {
+      padding: 40px 0;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-quote {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 20px;
+      border-left: 3px solid var(--primary-color);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 3px solid var(--light-color);
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    
+    .testimonial-role {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .mission-vision-section {
+      padding: 40px 0;
+    }
+    
+    .mission-card, .vision-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .mission-card:hover, .vision-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .mission-card {
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .vision-card {
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .mission-title, .vision-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    .mission-title i, .vision-title i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .mission-title i {
+      color: var(--secondary-color);
+    }
+    
+    .vision-title i {
+      color: var(--primary-color);
+    }
+    
+    .footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 40px;
+    }
+    
+    .footer-title {
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--light-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .logout-btn {
+  background: linear-gradient(to right, #f8576f, #e74c3c);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: white;
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.username-display {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.username-display i {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.username-display:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+
+
+
+  </style>
+
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Health Center Logo">
+        <a class="navbar-brand" href="#">
+          <i class=""></i>Health Center
+        </a>
+      </div>
+      
+      <!-- Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/about">
+              <i class="fas fa-info-circle"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/developer">
+              <i class="fas fa-code"></i> Developer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">
+              <i class="fas fa-history"></i> History
+            </a>
+          </li>
+        </ul>
+        
+          <!-- Show Username and Logout Button if User is Logged In -->
+          {% if session.username %}
+          <span class="navbar-text username-display me-3">
+            <i class="fas fa-user-circle"></i> {{ session.username }}
+          </span>
+              <a class="btn logout-btn" href="{{ url_for('logout') }}">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+          {% else %}
+              <!-- Show Login Button if Not Logged In -->
+              <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">About Medical Health Center</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="container about-section">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead">Welcome to Medical Health Center, where health meets technology for a brighter, healthier future.</p>
+        
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <div class="mission-card">
+              <h3 class="mission-title"><i class="fas fa-bullseye"></i> Our Mission</h3>
+              <p>At Medical Health Center, our mission is to provide you with a seamless and intuitive platform that leverages the power of artificial intelligence and machine learning. We want to assist you in identifying potential health concerns based on your reported symptoms, all while offering a wealth of educational resources to enhance your health literacy.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="vision-card">
+              <h3 class="vision-title"><i class="fas fa-eye"></i> Our Vision</h3>
+              <p>We envision a world where access to healthcare information is not just a luxury but a fundamental right. Our journey began with a simple yet powerful idea: to empower individuals with the knowledge and tools they need to take control of their health.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-title mt-5"><i class="fas fa-users"></i> Who We Are</h3>
+        <p>We are a passionate team of healthcare professionals, data scientists, and technology enthusiasts who share a common goal: to make healthcare accessible, understandable, and personalized for you. With years of experience in both healthcare and cutting-edge technology, we've come together to create this platform as a testament to our commitment to your well-being.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Approach Section -->
+  <div class="container mt-5">
+    <h2 class="page-header">Our Approach</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h4 class="feature-title">AI-Powered Analysis</h4>
+          <p>Our platform utilizes a robust machine learning model trained on a vast dataset of symptoms and diseases. By inputting your symptoms, our system generates accurate predictions about potential illnesses.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <h4 class="feature-title">Medical Expertise</h4>
+          <p>Our team of healthcare professionals ensures that all information provided is medically accurate, up-to-date, and reliable, giving you peace of mind when making health decisions.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4 class="feature-title">Holistic Care</h4>
+          <p>Beyond just diagnosis, we provide comprehensive information about precautions, medications, dietary advice, and workout tips to support your journey to better health.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Your Wellbeing Section -->
+  <div class="container about-section mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title"><i class="fas fa-heart"></i> Your Well-being, Our Priority</h3>
+        <p>Your health is our top priority. We understand that navigating the complexities of healthcare can be daunting. That's why we've gone the extra mile to provide not only accurate predictions but also comprehensive information about each disease. You'll find descriptions, recommended precautions, medications, dietary advice, and workout tips to support your journey to better health.</p>
+        
+        <h3 class="section-title"><i class="fas fa-handshake"></i> Join Us on this Journey</h3>
+        <p>We invite you to explore our platform, engage with our educational content, and take control of your health journey. Together, we can revolutionize the way individuals access and understand healthcare information.</p>
+        
+        <p class="mt-4">Thank you for choosing Medical Health Center as your trusted health companion. We are here to empower you with knowledge, support, and a brighter, healthier future.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="container stats-section">
+    <div class="row">
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-stethoscope"></i>
+          </div>
+          <div class="stat-number">10K+</div>
+          <div class="stat-text">Health Assessments</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <div class="stat-number">50+</div>
+          <div class="stat-text">Health Experts</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div class="stat-number">200+</div>
+          <div class="stat-text">Conditions Analyzed</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-number">95%</div>
+          <div class="stat-text">User Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="container">
+    <div class="call-to-action">
+      <h2 class="cta-title">Ready to Take Control of Your Health?</h2>
+      <p class="cta-text">Experience the power of AI-driven healthcare analysis today.</p>
+      <a href="/" class="btn cta-btn">Try It Now</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 class="footer-title">Medical Health Center</h4>
+          <p>Where health meets technology for a brighter, healthier future.</p>
+          <div class="social-links mt-3">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="/History"><i class="fas fa-chevron-right"></i> History</a></li>
+            <li><a href="/privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 class="footer-title">Contact Us</h4>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Health Street, Medical City</li>
+            <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+            <li><i class="fas fa-envelope"></i> info@medicalhealthcenter.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Medical Health Center. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

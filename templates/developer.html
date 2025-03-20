@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Care Center - Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #9b59b6;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+        /* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Thin width */
+    height: 12px; /* For horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffecb3; /* Light yellow background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+}
+
+
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color)) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 12px 0;
+    }
+    
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .myimg {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    
+    .myimg:hover {
+      transform: scale(1.1);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link.active {
+      background-color: var(--secondary-color) !important;
+      color: white !important;
+    }
+    
+    .search-form {
+      position: relative;
+    }
+    
+    .search-form input {
+      border-radius: 20px;
+      padding-left: 15px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .search-form button {
+      border-radius: 20px;
+      background-color: var(--secondary-color);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      transition: all 0.3s;
+    }
+    
+    .search-form button:hover {
+      background-color: var(--accent-color);
+      transform: translateX(3px);
+    }
+    
+    .page-header {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    /* Developer page specific styles */
+    .developer-section {
+      background: linear-gradient(135deg, var(--dark-color), #1a2a3a);
+      color: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .developer-section::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    
+    .developer-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      transition: all 0.3s;
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .developer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .developer-img {
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    
+    .developer-img:hover {
+      transform: scale(1.05);
+      border-color: var(--secondary-color);
+    }
+    
+    .developer-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 15px;
+      color: var(--secondary-color);
+    }
+    
+    .developer-title {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      color: white;
+    }
+    
+    .skill-badge {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 5px;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    
+    .skill-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    .tech-section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 30px;
+      border-left: 4px solid var(--accent-color);
+    }
+    
+    .tech-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .tech-icon {
+      font-size: 2.5rem;
+      margin: 10px;
+      color: var(--secondary-color);
+      transition: all 0.3s;
+    }
+    
+    .tech-icon:hover {
+      transform: translateY(-5px);
+      color: var(--primary-color);
+    }
+    
+    .project-stats {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 30px;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: var(--light-color);
+    }
+    
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+    }
+    
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .feature-description {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+      padding-left: 30px;
+    }
+    
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 30px;
+    }
+    
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      border: 3px solid var(--dark-color);
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    }
+    
+    .timeline-date {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+    
+    .timeline-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .timeline-description {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .contact-btn {
+      background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .contact-btn:hover {
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .developer-img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .developer-name {
+        font-size: 1.5rem;
+      }
+      
+      .timeline {
+        padding-left: 20px;
+      }
+      
+      .timeline-item:before {
+        left: -24px;
+      }
+    }
+
+    .logout-btn {
+  background: linear-gradient(to right, #f8576f, #e74c3c);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: white;
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.username-display {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.username-display i {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.username-display:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+  </style>
+
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Health Center Logo">
+        <a class="navbar-brand" href="#">
+          <i class=""></i>Health Center
+        </a>
+      </div>
+      
+      <!-- Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">
+              <i class="fas fa-info-circle"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/developer">
+              <i class="fas fa-code"></i> Developer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">
+              <i class="fas fa-history"></i> History
+            </a>
+          </li>
+        </ul>
+        
+          <!-- Show Username and Logout Button if User is Logged In -->
+          {% if session.username %}
+          <span class="navbar-text username-display me-3">
+            <i class="fas fa-user-circle"></i> {{ session.username }}
+          </span>
+              <a class="btn logout-btn" href="{{ url_for('logout') }}">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+          {% else %}
+              <!-- Show Login Button if Not Logged In -->
+              <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="page-header">
+      <i class="fas fa-code"></i> Developer Zone
+    </h1>
+    
+    <!-- Developer Section -->
+    <div class="developer-section">
+      <!-- Developer Profile -->
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+          <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Developer Photo" class="developer-img">
+          <h2 class="developer-name">Samveel Zaheer Khan</h2>
+          <p class="developer-title">Data Scientist</p>
+          <div class="social-links">
+            <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="developer-card">
+            <h3><i class="fas fa-user-circle"></i> About Me</h3>
+            <p>A passionate AI developer with expertise in healthcare applications. Dedicated to creating accessible and accurate medical solutions through artificial intelligence. With over 5 years of experience in machine learning and health informatics, I've developed several diagnostic tools that help both patients and healthcare providers.</p>
+            <p>My research focuses on applying advanced machine learning techniques to patient symptom recognition and diagnostic assistance, making healthcare more accessible to everyone.</p>
+            
+            <h3 class="mt-4"><i class="fas fa-brain"></i> Skills</h3>
+            <div>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Machine Learning</span>
+              <span class="skill-badge">Neural Networks</span>
+              <span class="skill-badge">Natural Language Processing</span>
+              <span class="skill-badge">Healthcare AI</span>
+              <span class="skill-badge">Flask</span>
+              <span class="skill-badge">TensorFlow</span>
+              <span class="skill-badge">PyTorch</span>
+              <span class="skill-badge">Medical Informatics</span>
+              <span class="skill-badge">Data Analysis</span>
+              <span class="skill-badge">Web Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project Stats -->
+      <div class="row project-stats">
+        <div class="col-md-3 col-6 text-center mb-4">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Diagnostic Accuracy</div>
+        </div>
+        <div class="col-md-3 col-6 text-center mb-4">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Diseases Detected</div>
+        </div>
+        <div class="col-md-3 col-6 text-center mb-4">
+          <div class="stat-number">5K+</div>
+          <div class="stat-label">Daily Users</div>
+        </div>
+        <div class="col-md-3 col-6 text-center mb-4">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Research Papers</div>
+        </div>
+      </div>
+      
+      <!-- Technology Stack -->
+      <div class="tech-section">
+        <h3 class="tech-title"><i class="fas fa-layer-group"></i> Technology Stack</h3>
+        <div class="row text-center">
+          <div class="col">
+            <i class="fab fa-python tech-icon" title="Python"></i>
+            <p>Python</p>
+          </div>
+          <div class="col">
+            <i class="fas fa-brain tech-icon" title="TensorFlow"></i>
+            <p>TensorFlow</p>
+          </div>
+          <div class="col">
+            <i class="fab fa-flask tech-icon" title="Flask"></i>
+            <p>Flask</p>
+          </div>
+          <div class="col">
+            <i class="fab fa-bootstrap tech-icon" title="Bootstrap"></i>
+            <p>Bootstrap</p>
+          </div>
+          <div class="col">
+            <i class="fas fa-database tech-icon" title="SQL/NoSQL"></i>
+            <p>SQL/NoSQL</p>
+          </div>
+          <div class="col">
+            <i class="fas fa-chart-bar tech-icon" title="Data Analysis"></i>
+            <p>Data Analysis</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Features -->
+      <h3 class="mt-5 mb-4"><i class="fas fa-star"></i> Application Features</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-stethoscope"></i></div>
+            <h4 class="feature-title">Symptom Analysis</h4>
+            <p class="feature-description">Advanced machine learning algorithms to analyze symptoms and predict potential diseases with high accuracy.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+            <h4 class="feature-title">Voice Recognition</h4>
+            <p class="feature-description">State-of-the-art speech-to-text technology for hands-free symptom input, making the app accessible to everyone.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-pills"></i></div>
+            <h4 class="feature-title">Treatment Suggestions</h4>
+            <p class="feature-description">Curated recommendations for medications, lifestyle changes, and preventive measures for identified conditions.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h4 class="feature-title">Privacy Focused</h4>
+            <p class="feature-description">HIPAA-compliant data handling ensures your medical information remains confidential and secure.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h4 class="feature-title">Responsive Design</h4>
+            <p class="feature-description">Seamless experience across all devices - from desktop computers to mobile phones and tablets.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <h4 class="feature-title">Continuous Learning</h4>
+            <p class="feature-description">Our AI models are constantly improving through feedback loops and new medical research integration.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Development Timeline -->
+      <h3 class="mt-5 mb-4"><i class="fas fa-history"></i> Development Journey</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">June 2023</div>
+          <div class="timeline-title">Project Inception</div>
+          <div class="timeline-description">Initial research and conceptualization of an AI-powered diagnostic tool for healthcare.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">August 2023</div>
+          <div class="timeline-title">Data Collection & Model Training</div>
+          <div class="timeline-description">Gathered medical datasets and trained the first version of our machine learning model.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">October 2023</div>
+          <div class="timeline-title">Alpha Testing</div>
+          <div class="timeline-description">Internal testing with healthcare professionals to refine accuracy and usability.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">December 2023</div>
+          <div class="timeline-title">Beta Launch</div>
+          <div class="timeline-description">Released the beta version to select users for real-world feedback.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">February 2024</div>
+          <div class="timeline-title">Voice Recognition Integration</div>
+          <div class="timeline-description">Added speech-to-text functionality for improved accessibility.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">March 2024</div>
+          <div class="timeline-title">Public Release</div>
+          <div class="timeline-description">Official launch of the Health Care Center application to the public.</div>
+        </div>
+      </div>
+      
+      <!-- Future Development -->
+      <div class="developer-card mt-5">
+        <h3><i class="fas fa-rocket"></i> Future Development</h3>
+        <p>We're constantly working to improve the Health Care Center application. Our roadmap includes:</p>
+        <ol>
+          <li>Integration with wearable devices for real-time health monitoring</li>
+          <li>Expansion of disease database to cover rare conditions</li>
+          <li>Multilingual support for global accessibility</li>
+          <li>Interactive 3D visualizations of symptoms and treatments</li>
+          <li>Telemedicine features to connect users with healthcare professionals</li>
+        </ol>
+      </div>
+      
+      <!-- Get in Touch -->
+      <div class="text-center mt-5">
+        <h3><i class="fas fa-paper-plane"></i> Get In Touch</h3>
+        <p>Have questions, suggestions, or want to contribute to the project? I'd love to hear from you!</p>
+        <a href="#" class="contact-btn">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script>
+    // Add animation to the feature cards
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-8px)';
+      });
+      
+      card.addEventListener('mouseout', function() {
+        this.style.transform = '';
+      });
+    });
+    
+    // Add animation to tech icons
+    document.querySelectorAll('.tech-icon').forEach(icon => {
+      icon.addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-8px) scale(1.2)';
+        this.style.color = 'var(--primary-color)';
+      });
+      
+      icon.addEventListener('mouseout', function() {
+        this.style.transform = '';
+        this.style.color = '';
+      });
+    });
+  </script>
+</body>
+</html>

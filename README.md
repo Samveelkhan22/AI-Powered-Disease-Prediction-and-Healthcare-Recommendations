@@ -125,7 +125,7 @@ The **AI-Powered Disease Prediction** system leverages machine learning to enhan
 ✔️ **Secure & scalable architecture**  
 
 🚨 **Note:** This system is **not a replacement** for professional medical consultation. **Always seek advice from a certified healthcare provider.**  
-
+ 
 ---
 
 ### ⭐ **If you found this project helpful, give it a star on GitHub!** ⭐  
